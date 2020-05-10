@@ -1,0 +1,44 @@
+package org.springframework.samples.petclinic.pages;
+
+import org.openqa.selenium.WebDriver;
+
+public class AddVisitPage extends Page {
+
+    private static final String URL = "http://localhost:8081/petclinic/owners/1";
+
+
+    public AddVisitPage(WebDriver driver) {
+        super(driver);
+    }
+
+    public void addVisitForm() {
+        super.goTo(URL);
+    }
+
+    public void fillInForm() {
+        xPathClick("/html/body/app-root/app-owner-detail/div/div/table[2]/tr/app-pet-list[1]/table/tr/td[1]/dl/button[3]");
+        fillDate("#visit > div.form-group.has-feedback > div:nth-child(1) > div > input", "2020/05/23");
+        fill("description", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tempus eleifend risus ut congue. Pellentesque nec lacus elit. Pellentesque convallis nisi ac augue pharetra eu tristique neque consequat.");
+        submit();
+
+    }
+
+
+    public void fillInDate(){
+        xPathClick("/html/body/app-root/app-owner-detail/div/div/table[2]/tr/app-pet-list[1]/table/tr/td[1]/dl/button[3]");
+        fillDate("#visit > div.form-group.has-feedback > div:nth-child(1) > div > input", "Fifth of May");
+        submit();
+
+    }
+    public void emptyForm(){
+        xPathClick("/html/body/app-root/app-owner-detail/div/div/table[2]/tr/app-pet-list[1]/table/tr/td[1]/dl/button[3]");
+        submit();
+    }
+    public void submit() {
+        xPathClick("//*[@id=\"visit\"]/div[2]/div/button[2]");
+    }
+
+    public  void  visitdetailsDisplyed(){
+        elementDoesExist("/html/body/app-root/app-owner-detail/div/div/table[2]/tr/app-pet-list[1]/table/tr/td[2]/app-visit-list/table/tr");
+    }
+}
