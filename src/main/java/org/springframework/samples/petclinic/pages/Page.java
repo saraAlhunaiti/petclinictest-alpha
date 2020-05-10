@@ -20,13 +20,9 @@ public class Page  {
         getLogger("org.openqa.selenium").setLevel(Level.SEVERE);
     }
 
-
     private final WebDriver driver;
-
     protected Page(WebDriver driver) {
-        this.driver = driver;
-
-    }
+        this.driver = driver; }
 
 
     protected void goTo(String url) {
@@ -37,6 +33,43 @@ public class Page  {
     protected void xPathClick(String path) {
         driver.findElement(By.xpath(path)).click();
     }
+
+    protected void remove(String id) {
+        final WebElement element = waitFor(id);
+        element.clear();
+        element.sendKeys(" \b");
+    }
+
+    protected boolean xPathExists(String xPath) {
+        return driver.findElement(By.xpath(xPath)) != null;
+    }
+
+    protected boolean elementIsUpdated (String text){
+        WebElement textDemo = driver.findElement(By.xpath(text));
+        if(textDemo.isDisplayed()) {
+            return true;
+        } else{
+            return false;}
+    }
+
+
+    protected boolean elementDoesExist(String path) {
+
+        List<WebElement> dynamicElement = driver.findElements(By.xpath(path));
+
+        if (dynamicElement.size() < dynamicElement.size() + 1) {
+          System.out.println(true);
+            return true;
+        } else {
+           System.out.println(false);
+            return false;
+        }
+    }
+
+    public boolean isExisting(String path){
+        return driver.findElement(By.xpath(path)).isDisplayed();
+    }
+
 
     protected String getText(String cssPath) {
         return driver.findElement(By.xpath(cssPath)).getText();
@@ -59,15 +92,6 @@ public class Page  {
         driver.findElement(By.cssSelector(path)).sendKeys(value);
 
     }
- /*   protected boolean nameDoseExists(String path) {
-        WebElement textElement = driver.findElement(By.xpath(path));
-        if (textElement.isDisplayed()) {
-            return true;
-        }
-        else {
-            return false;
-        }
-    }*/
 
 
     protected void click(String id) {
@@ -82,28 +106,11 @@ public class Page  {
         return (new WebDriverWait(driver, waitInterval)).until(ExpectedConditions.presenceOfElementLocated(By.id(id)));
     }
 
-
     protected boolean exists(String id) {
         return driver.findElement(By.id(id)) != null;
     }
 
 
-
-    protected boolean elementDoesExist (String path) {
-
-        List<WebElement> dynamicElement = driver.findElements(By.xpath(path));
-
-        if (dynamicElement.size() < dynamicElement.size() + 1) {
-            System.out.println(true);
-            return true;
-        } else {
-            System.out.println(false);
-            return false;
-
-
-        }
-
-    }
 
     protected boolean removevisitdetails(String path){
         List<WebElement> RemovedElement = driver.findElements(By.xpath(path));
