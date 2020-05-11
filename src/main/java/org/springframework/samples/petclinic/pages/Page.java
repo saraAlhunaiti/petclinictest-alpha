@@ -13,7 +13,7 @@ import static org.openqa.selenium.By.cssSelector;
 
 public class Page {
     static {
-        System.setProperty("webdriver.chrome.driver", "/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "/Users/chromedriver");
         System.setProperty("webdriver.chrome.silentOutput", "true");
         getLogger("org.openqa.selenium").setLevel(Level.SEVERE);
     }
