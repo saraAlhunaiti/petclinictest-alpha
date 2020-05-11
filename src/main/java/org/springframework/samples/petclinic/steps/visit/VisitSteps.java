@@ -141,7 +141,7 @@ public class VisitSteps {
 
     }
 
-    @Then("The updated pet's data will be displayed")
+    @Then("The updated visit's data will be displayed")
     public void theUpdatedPetSDataWillBeDisplayed() {
 
     }

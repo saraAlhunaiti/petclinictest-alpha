@@ -9,7 +9,7 @@ Feature: Edit visit
     Given I am on the edit-visit form
     And   I enter valid data to edit the visit
     When  I submit the form
-    Then  The updated pet's data will be displayed
+    Then  The updated visit's data will be displayed
 
   Scenario: Unsuccessfully edit visit details
     Given I am on the page of Owner Information

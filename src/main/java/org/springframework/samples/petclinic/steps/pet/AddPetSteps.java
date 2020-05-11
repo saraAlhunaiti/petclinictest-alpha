@@ -11,6 +11,7 @@ import org.springframework.samples.petclinic.pages.AddPetPage;
 import java.util.logging.Level;
 
 import static java.util.logging.Logger.getLogger;
+import static org.junit.Assert.assertTrue;
 
 public class AddPetSteps {
 
@@ -24,66 +25,69 @@ public class AddPetSteps {
     private final WebDriver driver = new ChromeDriver();
     private final AddPetPage addPetPage = new AddPetPage(driver);
 
+    private String addPetFormURL;
+    private String petName = "Marshmallow";
+    private final String birthDate = "2020/02/20";
 
 
-
-    //--------- Successfully add an new visit ---------\\
+    //------------------\\
     @Given("I am on the add-pet form")
     public void iAmOnTheAddPetForm() {
         addPetPage.addPetForm();
+
     }
 
     @And("I enter valid pet data")
     public void iEnterValidPetData() {
-        addPetPage.fillInForm();
+        addPetPage.fillInPetForm(petName, birthDate, 2);
     }
 
     @When("I submit add-Pet form")
     public void iSubmitAddPetForm() {
+        addPetFormURL = driver.getCurrentUrl();
+        addPetPage.submit();
 
     }
 
     @Then("The new pet will be displayed under pets and visits beneath its owner")
     public void theNewPetWillBeDisplayedUnderPetsAndVisitsBeneathItsOwner() {
-        addPetPage.petDoesExist();
+        addPetPage.newPetName(petName);
+        driver.close();
     }
 
-//--------- Unsuccessfully add an new visit ---------\\
 
     @And("I enter invalid pet data")
     public void iEnterInvalidPetData() {
-        addPetPage.invalidData();
+        addPetPage.fillInPetForm(petName, birthDate, 2);
 
     }
 
 
     @And("I enter symbols and numbers rather than words in the name field")
     public void iEnterSymbolsAndNumbersRatherThanWordsInTheNameField() {
-        addPetPage.fillInName();
+        petName = "24#@%%25";
+        addPetPage.fillInPetForm(petName, birthDate, 0);
     }
 
     @And("Provide an invalid birth date")
     public void provideAnInvalidBirthDate() {
-        addPetPage.fillInBirthday();
+        addPetPage.fillInPetForm(petName, "not-a-date", 1);
 
     }
 
-    @When("I click on the save pet button")
-    public void iClickOnTheSavePetButton() {
-
-    }
-
-    @Then("The the button will be enabled but doesn't navigate")
-    public void theTheButtonWillBeEnabledButDoesnTNavigate() {
-    }
 
     @And("try to add pet without filling in the fields")
     public void tryToAddPetWithoutFillingInTheFields() {
-        addPetPage.emptyForm();
+        addPetPage.submit();
 
     }
 
 
+    @Then("I stay in add-pet form")
+    public void iStayInAddPetForm() {
+        assertTrue(addPetPage.isCurrent(addPetFormURL));
+        driver.close();
+    }
 }
 
 
