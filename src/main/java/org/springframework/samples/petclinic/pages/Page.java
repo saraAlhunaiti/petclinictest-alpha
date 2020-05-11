@@ -52,7 +52,9 @@ public class Page  {
             return false;}
     }
 
-
+    public boolean isCurrent(String url) {
+        return url.equals(driver.getCurrentUrl());
+    }
     protected boolean elementDoesExist(String path) {
 
         List<WebElement> dynamicElement = driver.findElements(By.xpath(path));
@@ -93,7 +95,6 @@ public class Page  {
 
     }
 
-
     protected void click(String id) {
         waitFor(id).click();
     }
@@ -106,8 +107,8 @@ public class Page  {
         return (new WebDriverWait(driver, waitInterval)).until(ExpectedConditions.presenceOfElementLocated(By.id(id)));
     }
 
-    protected boolean exists(String id) {
-        return driver.findElement(By.id(id)) != null;
+    protected boolean exists(String path) {
+        return driver.findElement(By.xpath(path)) != null;
     }
 
 
