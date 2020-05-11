@@ -1,5 +1,5 @@
 Feature: Add Owner
-  As a employee
+  As an employee
   I want to add new customers (owners)
   So that we can track their pets and visits
 
@@ -12,12 +12,7 @@ Feature: Add Owner
     Given I am on the add-owner form
     And   I enter valid owner data
     When  I submit the form
-    Then  The new owner will be displayed at the end of the owner's list
-
-  Scenario: Unsuccessfully add an owner
-    Given I am on the add-owner form
-    When  I enter invalid data
-    Then  The submit button is disabled
+    Then  The new owner will be added to the owner's list
 
   Scenario: Short data
     Given I am on the add-owner form
@@ -30,7 +25,7 @@ Feature: Add Owner
     And   I enter then remove values from each field
     Then  The submit button is disabled
     And   I see a specific message for each field specifying that it is required
-    And   Each field has an x at the end
+    And   All fields has an x at the end
 
   Scenario: Phone number must be numeric
     Given I am on the add-owner form
@@ -41,12 +36,13 @@ Feature: Add Owner
 
   Scenario: Create owner with symbols and numbers in key fields
     Given I am on the add-owner form
-    And   I enter symbols and numbers rather than words
+    And   I enter symbols and numbers rather than words in all fields except the telephone no. field
     When  I submit the form
-    Then  The new owner will be displayed at the end of the owner's list
+    Then  The new owner will be added to the owner's list
 
   Scenario: Duplicate an owner
     Given I am on the add-owner form
-    And   I enter duplicate owner's details
-    When  I submit the form
-    Then  The new owner will be displayed at the end of the owner's list
+    And   I enter valid owner data
+    And   I submit the form
+    When  I add another owner with duplicate details
+    Then  The new owner will be added to the owner's list
