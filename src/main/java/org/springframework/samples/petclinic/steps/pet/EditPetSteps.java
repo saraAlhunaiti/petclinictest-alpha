@@ -4,7 +4,6 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.springframework.samples.petclinic.pages.EditPetPage;
@@ -12,6 +11,7 @@ import org.springframework.samples.petclinic.pages.EditPetPage;
 import java.util.logging.Level;
 
 import static java.util.logging.Logger.getLogger;
+import static org.junit.Assert.assertTrue;
 
 public class EditPetSteps {
     static {
@@ -24,67 +24,58 @@ public class EditPetSteps {
     private final WebDriver driver = new ChromeDriver();
     EditPetPage editPetPage = new EditPetPage(driver);
 
+    private String petFormURL;
+    private String petName = "snowBall";
+    private final String birthDate = "2020/02/02";
+
     @Given("I am on the edit-pet form")
     public void iAmOnTheEditPetForm() {
         editPetPage.editPetForm();
+
     }
 
     @And("I enter valid pet-data")
     public void iEnterValidPetData() {
-        editPetPage.fillInForm();
-
+        editPetPage.fillInPetForm(petName, birthDate, 1);
     }
+
     @When("I click on the update pet button")
     public void iClickOnTheUpdatePetButton() {
-
+        petFormURL = driver.getCurrentUrl();
+        editPetPage.submit();
     }
 
     @Then("The updated pet's data will be displayed")
     public void theUpdatedPetSDataWillBeDisplayed() {
-       // editPetPage.updatedData();
+        editPetPage.updatedPetName(petName);
         driver.close();
     }
 
-    //-------------------------------------------
-//
-//    @And("I enter symbols and numbers rather than words in the name field")
-//    public void iEnterSymbolsAndNumbersRatherThanWordsInTheNameField() {
-//        editPetPage.fillNumAndSymbolsName();
-//    }
-
-//    @And("Provide an invalid birth date")
-//    public void provideAnInvalidBirthDate() {
-//        editPetPage.fillInvalidDate();
-//
-//    }
-
-    @Then("The the button will be disabled")
-    public boolean theTheButtonWillBeDisabled() {
-        return driver.findElement(By.xpath("/html/body/app-root/app-pet-edit/div/div/form/div[6]/div/button[2]")).isEnabled();
-        // Todo: deal with the error "Failure"
-    }
-
-    @Then("The update pet button will be disabled")
-    public boolean theUpdatePetButtonWillBeDisabled() {
-
-        return driver.findElement(By.xpath("/html/body/app-root/app-pet-edit/div/div/form/div[6]/div/button[2]")).isEnabled();
-        // ToDo : update button is enabled
-    }
 
 
     @And("I enter symbols and numbers in name field")
+
     public void iEnterSymbolsAndNumbersInNameField() {
-       editPetPage.fillNumAndSymbolsName();
-   }
+        petName = "67#$234";
+        editPetPage.fillInPetForm(petName, birthDate, 1);
+    }
 
     @And("I enter invalid birth-date")
     public void iEnterInvalidBirthDate() {
-        editPetPage.fillInDate();
+        editPetPage.fillInPetForm(petName, "not-a-date", 1);
     }
 
     @And("I  remove values from each field")
     public void iRemoveValuesFromEachField() {
-        editPetPage.fillInEmptyForm();
+        editPetPage.fillInPetForm(" ", " ", 1);
     }
+
+    @Then("I stay in edit-pet form")
+    public void iStayInEditPetForm() {
+        assertTrue(editPetPage.isCurrent(petFormURL));
+        driver.close();
+    }
+
 }
+
 
