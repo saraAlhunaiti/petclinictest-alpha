@@ -15,7 +15,7 @@ import static java.util.logging.Logger.getLogger;
 
 public class Page  {
     static {
-        System.setProperty("webdriver.chrome.driver", "/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "/Users/chromedriver");
         System.setProperty("webdriver.chrome.silentOutput", "true");
         getLogger("org.openqa.selenium").setLevel(Level.SEVERE);
     }
