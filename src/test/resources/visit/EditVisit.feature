@@ -4,18 +4,33 @@ Feature: Edit visit
   So that we can modify customer's data
 
   Scenario: Successfully edit visit details
+    Given I am on the page of Owner Information
+    When  I click on Edit Visit button
     Given I am on the edit-visit form
     And   I enter valid data to edit the visit
     When  I submit the form
     Then  The updated pet's data will be displayed
 
   Scenario: Unsuccessfully edit visit details
+    Given I am on the page of Owner Information
+    When  I click on Edit Visit button
     Given I am on the edit-visit form
-    And   Provide an invalid visit date
-    When  I submit the form
-    Then  add visit button will be enabled but doesn't navigate
+    And   I Provide an invalid visit date
+    When  I submit the edit-visit form
+    Then  I stay in edit visit form
 
   Scenario: Leave all the fields empty
+    Given I am on the page of Owner Information
+    When  I click on Edit Visit button
     Given I am on the edit-visit form
     And   I did not fill the visit form
-    Then  add visit button will be enabled but doesn't navigate
+    When  I submit the edit-visit form
+    Then  I stay in edit visit form
+
+  Scenario: Exceed the maximum allowed characters in the description field
+    Given I am on the page of Owner Information
+    When  I click on Edit Visit button
+    Given I am on the edit-visit form
+    And   I edit the description filed with characters that exceed the limit
+    When  I submit the edit-visit form
+    Then  I stay in edit visit form
