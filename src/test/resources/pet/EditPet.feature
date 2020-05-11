@@ -9,19 +9,20 @@ Feature: Edit pet
     When  I click on the update pet button
     Then  The updated pet's data will be displayed
 
-  Scenario: Unsuccessfully edit pet's name
+  Scenario: Edit pet with symbols and numbers in the name field
     Given I am on the edit-pet form
     And   I enter symbols and numbers in name field
     When  I click on the update pet button
     Then  The updated pet's data will be displayed
 
-  Scenario: Unsuccessfully edit pet's birth date
+  Scenario: Unsuccessfully edit pet's birth date with invalid date
     Given I am on the edit-pet form
     And   I enter invalid birth-date
     When  I click on the update pet button
-    Then  The updated pet's data will be displayed
+    Then  I stay in edit-pet form
 
   Scenario: Leave all the fields empty
     Given I am on the edit-pet form
     And   I  remove values from each field
-    Then  The update pet button will be disabled
+    When  I click on the update pet button
+    Then  I stay in edit-pet form
