@@ -40,9 +40,4 @@ Feature: Add Owner
     When  I submit the form
     Then  The new owner will be added to the owner's list
 
-  Scenario: Duplicate an owner
-    Given I am on the add-owner form
-    And   I enter valid owner data
-    And   I submit the form
-    When  I add another owner with duplicate details
-    Then  The new owner will be added to the owner's list
+

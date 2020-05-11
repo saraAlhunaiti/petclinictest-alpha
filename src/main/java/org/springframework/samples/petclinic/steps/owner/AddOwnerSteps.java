@@ -23,6 +23,8 @@ public class AddOwnerSteps {
 
     private final WebDriver driver = new ChromeDriver();
     AddOwnerPage addOwnerPage = new AddOwnerPage(driver);
+    private final static String ADD_OWNER_FORM_URL="http://localhost:8081/petclinic/owners/add";
+
 
     @Given("I am on the add-owner form")
     public void iAmOnTheAddOwnerForm() {
@@ -41,11 +43,12 @@ public class AddOwnerSteps {
 
     @Then("Each field will have a tick on the right")
     public void eachFieldWillHaveATickOnTheRight() {
-        assertTrue(addOwnerPage.checkedFields());
+        assertTrue(addOwnerPage.areAllFieldsChecked());
     }
 
     @Then("The submit button is disabled")
-    public void theSubmitButtonIsDisabled() {
+    public void theSubmitButtonIsDisabled() { assertTrue(addOwnerPage.isCurrent(ADD_OWNER_FORM_URL));
+        ;
     }
 
     @When("I try to enter a single character into the name fields")
@@ -55,17 +58,18 @@ public class AddOwnerSteps {
 
     @Then("I see a specific message for each field specifying that the field must be at least 2 chars long")
     public void validateMinLengthErrorMessage() {
-        assertTrue(addOwnerPage.nameFieldsTextErrors());
+        assertTrue(addOwnerPage.areNameFieldsShort());
 
     }
 
     @And("Each field has an x at the end")
     public void validateIncorrectInputErrorSymbol() {
-        assertTrue(addOwnerPage.nameFieldsCrossError());
+        assertTrue(addOwnerPage.areNameFieldsUnchecked());
     }
 
     @And("The field has an x at the end")
     public void validateIncorrectInputErrorSymbols() {
+        assertTrue(addOwnerPage.isTelephoneFieldUnchecked());
     }
 
     @And("I enter then remove values from each field")
@@ -76,7 +80,7 @@ public class AddOwnerSteps {
 
     @And("I see a specific message for each field specifying that it is required")
     public void iSeeASpecificMessageForEachFieldSpecifyingThatItIsRequired() {
-        assertTrue(addOwnerPage.AllFieldsTextErrors());
+        assertTrue(addOwnerPage.areAllFieldsRequired());
     }
 
     @And("I enter a non-numeric value into the phone field")
@@ -86,6 +90,7 @@ public class AddOwnerSteps {
 
     @And("I see an error message specifying that the phone number only accepts digits")
     public void iSeeAnErrorMessageSpecifyingThatThePhoneNumberOnlyAcceptsDigits() {
+        assertTrue(addOwnerPage.isTelephoneFieldNumber());
     }
 
     @And("I enter symbols and numbers rather than words in all fields except the telephone no. field")
@@ -94,13 +99,6 @@ public class AddOwnerSteps {
     }
 
 
-    @When("I add another owner with duplicate details")
-    public void iAddAnotherOwnerWithDuplicateDetails(){
-        addOwnerPage.addOwnerForm();
-        addOwnerPage.fillInForm();
-        addOwnerPage.submit();
-    }
-
     @Then("The new owner will be added to the owner's list")
     public void theNewOwnerWillBeAddedToTheOwnerSList() {
         assertTrue(addOwnerPage.checkOwnerIsAdded());
@@ -108,6 +106,6 @@ public class AddOwnerSteps {
 
     @And("All fields has an x at the end")
     public void allFieldsHasAnXAtTheEnd() {
-        assertTrue(addOwnerPage.allFieldsCrossError());
+        assertTrue(addOwnerPage.areAllFieldsUnchecked());
     }
 }
