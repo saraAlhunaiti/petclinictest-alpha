@@ -22,7 +22,7 @@ public class ViewOwnersSteps {
     private final WebDriver driver = new ChromeDriver();
     HomePage homePage = new HomePage(driver);
     ViewOwnerPage viewOwnerPage = new ViewOwnerPage(driver);
-
+    //_________________ Scenario: Successfully view owner's details
     @Given("I am on the home page")
     public void iAmOnTheHomePage() {
         homePage.home();
@@ -36,6 +36,23 @@ public class ViewOwnersSteps {
     @Then("Owners list page will be displayed")
     public void ownersListPageWillBeDisplayed() {
         viewOwnerPage.allOwnerList();
+    }
+
+
+    //_________________  Scenario: Owner's details existent
+
+    @Given("I am on the home Pagee")
+    public void iAmOnTheHomePagee() {
+        homePage.home();
+    }
+    @When("I click on all from owners list")
+    public void iClickOnAllFromOwnersList() {
+        viewOwnerPage.clickOnAllOwner();
+    }
+
+    @Then("Owners's details will be displayed")
+    public void ownersSDetailsWillBeDisplayed() {
+        viewOwnerPage.ownersDetailsExistent();
     }
 
 
