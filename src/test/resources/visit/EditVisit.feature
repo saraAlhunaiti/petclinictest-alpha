@@ -8,7 +8,7 @@ Feature: Edit visit
     When  I click on Edit Visit button
     Given I am on the edit-visit form
     And   I enter valid data to edit the visit
-    When  I submit the form
+    When  I submit the edit-visit form
     Then  The updated visit's data will be displayed
 
   Scenario: Unsuccessfully edit visit details

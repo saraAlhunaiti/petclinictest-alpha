@@ -3,37 +3,40 @@ package org.springframework.samples.petclinic.pages;
 import org.openqa.selenium.WebDriver;
 
 public class EditVisitPage extends Page {
-private static final String URL = "http://localhost:8081/petclinic/owners/1";
+    private static final String URL = "http://localhost:8081/petclinic/owners/1";
 
 
     public EditVisitPage(WebDriver driver) {
-            super(driver);
-        }
+        super(driver);
+    }
+
     public void editVisitPage() {
         super.goTo(URL);
     }
 
-    public void editVisitButton (){
+    public void editVisitButton() {
         xPathClick("/html/body/app-root/app-owner-detail/div/div/table[2]/tr/app-pet-list[1]/table/tr/td[2]/app-visit-list/table/tr[1]/td[3]/button[1]");
 
     }
-        public void fillInForm() {
-            delteFelid();
-            fillDate("#visit > div.form-group.has-feedback > div:nth-child(1) > div > input", "2020/05/19");
-            fill("description", "Pellentesque nec lacus elit. Pellentesque convallis nisi ac augue pharetra eu tristique neque consequat.");
 
-        }
+    public void fillInForm() {
+        delteFelid();
+        fillDate("#visit > div.form-group.has-feedback > div:nth-child(1) > div > input", "2020/05/19");
+        fill("description", "Pellentesque nec lacus elit. Pellentesque convallis nisi ac augue pharetra eu tristique neque consequat.");
 
-        public void fillInDate(){
-            delteFelid();
-            fillDate("#visit > div.form-group.has-feedback > div:nth-child(1) > div > input", "Fifth of May");
+    }
 
-        }
+    public void fillInDate() {
+        delteFelid();
+        fillDate("#visit > div.form-group.has-feedback > div:nth-child(1) > div > input", "Fifth of May");
 
-        public void emptyForm(){
-            delteFelid();
+    }
 
-        }
+    public void emptyForm() {
+        delteFelid();
+
+    }
+
     public void fillInDescription() {
         delteFelid();
         fillDate("#visit > div.form-group.has-feedback > div:nth-child(1) > div > input", "2020/05/23");
@@ -41,16 +44,15 @@ private static final String URL = "http://localhost:8081/petclinic/owners/1";
 
     }
 
-        public void submit() {
-            xPathClick("//*[@id=\"visit\"]/div[2]/div/button[2]");
-        }
+    public void submit() {
+        xPathClick("//*[@id=\"visit\"]/div[2]/div/button[2]");
+    }
 
 
-        public void delteFelid(){
-            editdelete("#visit > div.form-group.has-feedback > div:nth-child(1) > div > input");
-            editdelete("#description");
-        }
-
+    public void delteFelid() {
+        editdelete("#visit > div.form-group.has-feedback > div:nth-child(1) > div > input");
+        editdelete("#description");
+    }
 
 
 }

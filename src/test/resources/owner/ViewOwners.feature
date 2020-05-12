@@ -1,4 +1,4 @@
-Feature: View Owner
+Feature: View Owners
   As an employee
   I want to view customers'details (owners)
   So that we can track their personal details

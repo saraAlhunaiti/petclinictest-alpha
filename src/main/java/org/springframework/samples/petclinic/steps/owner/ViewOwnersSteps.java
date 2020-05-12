@@ -22,6 +22,7 @@ public class ViewOwnersSteps {
     private final WebDriver driver = new ChromeDriver();
     HomePage homePage = new HomePage(driver);
     ViewOwnerPage viewOwnerPage = new ViewOwnerPage(driver);
+
     //_________________ Scenario: Successfully view owner's details
     @Given("I am on the home page")
     public void iAmOnTheHomePage() {
@@ -45,6 +46,7 @@ public class ViewOwnersSteps {
     public void iAmOnTheHomePagee() {
         homePage.home();
     }
+
     @When("I click on all from owners list")
     public void iClickOnAllFromOwnersList() {
         viewOwnerPage.clickOnAllOwner();

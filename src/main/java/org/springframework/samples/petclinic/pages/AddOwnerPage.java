@@ -2,7 +2,6 @@ package org.springframework.samples.petclinic.pages;
 
 import org.openqa.selenium.WebDriver;
 
-//-Dwebdriver.chrome.driver="/chromedriver.exe" 
 public class AddOwnerPage extends Page {
     private static final String URL = "http://localhost:8081/petclinic/owners/add";
     private static final String FIELD1_CHECK_SIGN = "/html/body/app-root/app-owner-add/div/div/form/div[2]/div/span\n";

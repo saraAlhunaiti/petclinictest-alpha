@@ -52,7 +52,6 @@ public class EditPetSteps {
     }
 
 
-
     @And("I enter symbols and numbers in name field")
 
     public void iEnterSymbolsAndNumbersInNameField() {
