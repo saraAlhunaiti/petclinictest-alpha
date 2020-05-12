@@ -17,5 +17,5 @@ Feature: Edit Owner
   Scenario: Edit an owner with empty fields
     Given I am on the edit-owner form
     When  I remove data from the fields
-    Then  The update owner button is disabled
     And   Each update field has an x at the end
+    Then  I stay in edit-owner form

@@ -4,77 +4,108 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.springframework.samples.petclinic.pages.AddOwnerPage;
+
+import java.util.logging.Level;
+
+import static java.util.logging.Logger.getLogger;
+import static org.junit.Assert.assertTrue;
+
 
 public class AddOwnerSteps {
+    static {
+        System.setProperty("webdriver.chrome.driver", "/Users/chromedriver");
+        System.setProperty("webdriver.chrome.silentOutput", "true");
+        getLogger("org.openqa.selenium").setLevel(Level.SEVERE);
+    }
+
+    private final WebDriver driver = new ChromeDriver();
+    AddOwnerPage addOwnerPage = new AddOwnerPage(driver);
+    private final static String ADD_OWNER_FORM_URL="http://localhost:8081/petclinic/owners/add";
+
 
     @Given("I am on the add-owner form")
     public void iAmOnTheAddOwnerForm() {
-        System.out.println("wibble iAmOnTheAddOwnerForm");
+        addOwnerPage.addOwnerForm();
     }
 
     @When("I enter valid owner data")
     public void iEnterValidData() {
-        System.out.println("wibble iEnterValidData");
-    }
-
-    @Then("Each field will have a tick on the right")
-    public void eachFieldWillHaveATickOnTheRight() {
-        System.out.println("wibble eachFieldWillHaveATickOnTheRight");
+        addOwnerPage.fillInForm();
     }
 
     @When("I submit the form")
     public void iSubmitTheForm() {
+        addOwnerPage.submit();
     }
 
-    @Then("The new owner will be displayed at the end of the owner's list")
-    public void theNewOwnerWillBeDisplayedAtTheEndOfTheOwnerSList() {
-    }
-
-    @When("I enter invalid data")
-    public void iEnterInvalidData() {
+    @Then("Each field will have a tick on the right")
+    public void eachFieldWillHaveATickOnTheRight() {
+        assertTrue(addOwnerPage.areAllFieldsChecked());
     }
 
     @Then("The submit button is disabled")
-    public void theSubmitButtonIsDisabled() {
+    public void theSubmitButtonIsDisabled() { assertTrue(addOwnerPage.isCurrent(ADD_OWNER_FORM_URL));
+        ;
     }
 
     @When("I try to enter a single character into the name fields")
     public void iTryToEnterASingleCharacterIntoTheNameFields() {
+        addOwnerPage.fillInNameFields();
     }
 
     @Then("I see a specific message for each field specifying that the field must be at least 2 chars long")
     public void validateMinLengthErrorMessage() {
+        assertTrue(addOwnerPage.areNameFieldsShort());
+
     }
 
     @And("Each field has an x at the end")
     public void validateIncorrectInputErrorSymbol() {
+        assertTrue(addOwnerPage.areNameFieldsUnchecked());
     }
 
     @And("The field has an x at the end")
     public void validateIncorrectInputErrorSymbols() {
+        assertTrue(addOwnerPage.isTelephoneFieldUnchecked());
     }
 
     @And("I enter then remove values from each field")
     public void iEnterThenRemoveValuesFromEachField() {
+        addOwnerPage.fillInForm();
+        addOwnerPage.removeValues();
     }
 
     @And("I see a specific message for each field specifying that it is required")
     public void iSeeASpecificMessageForEachFieldSpecifyingThatItIsRequired() {
+        assertTrue(addOwnerPage.areAllFieldsRequired());
     }
 
     @And("I enter a non-numeric value into the phone field")
     public void iEnterANonNumericValueIntoThePhoneField() {
+        addOwnerPage.fillInWithInvalidTelephoneNum();
     }
 
     @And("I see an error message specifying that the phone number only accepts digits")
     public void iSeeAnErrorMessageSpecifyingThatThePhoneNumberOnlyAcceptsDigits() {
+        assertTrue(addOwnerPage.isTelephoneFieldNumber());
     }
 
-    @And("I enter symbols and numbers rather than words")
+    @And("I enter symbols and numbers rather than words in all fields except the telephone no. field")
     public void iEnterSymbolsAndNumbersRatherThanWords() {
+        addOwnerPage.fillInWithSymbols();
     }
 
-    @And("I enter duplicate owner's details")
-    public void iEnterDuplicateOwnerSDetails() {
+
+    @Then("The new owner will be added to the owner's list")
+    public void theNewOwnerWillBeAddedToTheOwnerSList() {
+        assertTrue(addOwnerPage.checkOwnerIsAdded());
+    }
+
+    @And("All fields has an x at the end")
+    public void allFieldsHasAnXAtTheEnd() {
+        assertTrue(addOwnerPage.areAllFieldsUnchecked());
     }
 }
