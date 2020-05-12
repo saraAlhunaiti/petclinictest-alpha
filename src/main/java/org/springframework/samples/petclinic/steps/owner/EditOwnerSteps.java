@@ -46,10 +46,11 @@ public class EditOwnerSteps {
     public void iRemoveDataFromTheFields() {
         editOwnerPage.fillInEmptyFieldForm();
     }
-    @Then("The update owner button is disabled")
-    public void theUpdateOwnerButtonIsDisabled() {
+    @Then("I stay in edit-owner form")
+    public void IStayInEditOwnerForm() {
     }
     @And("Each update field has an x at the end")
     public void validateIncorrectInputErrorSymbol() {
     }
 }
+
