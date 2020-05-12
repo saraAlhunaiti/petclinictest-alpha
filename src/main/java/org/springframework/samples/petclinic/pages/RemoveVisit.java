@@ -14,6 +14,7 @@ public class RemoveVisit extends Page {
 
     public void removeVisitForm() {
         super.goTo(URL);
+
     }
 
     public void clickRemoveButton() {

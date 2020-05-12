@@ -18,7 +18,7 @@ import static java.util.logging.Logger.getLogger;
 
 public class VisitSteps {
     static {
-        System.setProperty("webdriver.chrome.driver", "/Users/chromedriver");
+        System.setProperty("webdriver.chrome.driver", "/chromedriver.exe");
         System.setProperty("webdriver.chrome.silentOutput", "true");
         getLogger("org.openqa.selenium").setLevel(Level.SEVERE);
     }
@@ -193,9 +193,11 @@ public class VisitSteps {
  //---------Remove visit ---------\\
 
 
-    @Given("I am on the Owner-Information page")
-    public void iAmOnTheOwnerInformationPage() {
+    @Given("I am on the Owner-Information page to Delete visit")
+    public void iAmOnTheOwnerInformationPageToDeleteVisit() {
+        assertTrue(editVisitPage.isCurrent(visitFormsURL));
         removeVisit.removeVisitForm();
+
     }
 
 
@@ -209,7 +211,6 @@ public class VisitSteps {
         removeVisit.removeVisit();
 
     }
-
 
 
 
