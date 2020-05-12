@@ -19,6 +19,8 @@ public class ViewOwnerSteps {
     }
     private final WebDriver driver = new ChromeDriver();
     ViewOwnerPage viewOwnerPage = new ViewOwnerPage(driver);
+
+    //________________ Scenario: Successfully view owner's details
     @Given("I am on the view-owners list on the owners page")
     public void iAmOnTheViewOwnersListOnTheOwnersPage() {
         viewOwnerPage.ownersList();
@@ -33,4 +35,21 @@ public class ViewOwnerSteps {
     public void ownerDetailPageWillBeDisplayed() {
         viewOwnerPage.ownerDetails();
     }
+    //_________________  Scenario: Owner's details existent
+    @Given("I am on the View-Owners Page")
+    public void iAmOnTheViewOwnersPage() {
+        viewOwnerPage.ownersList();
+    }
+
+    @When("I click on owner's name")
+    public void iClickOnOwnerSName() {
+        viewOwnerPage.selectFirstOwner();
+    }
+
+    @Then("Owner's details will be displayed")
+    public void ownerSDetailsWillBeDisplayed() {
+
+    }
+
+
 }

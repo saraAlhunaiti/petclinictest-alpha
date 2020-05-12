@@ -7,3 +7,8 @@ Feature: View Owner
     Given I am on the home page
     When  I click on all from owners drop-down list
     Then  Owners list page will be displayed
+
+  Scenario: Owner's details existent
+    Given I am on the home Pagee
+    When  I click on all from owners list
+    Then  Owners's details will be displayed

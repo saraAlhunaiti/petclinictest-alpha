@@ -7,3 +7,8 @@ Feature: View Owner
     Given I am on the view-owners list on the owners page
     When  I click on the owner's name
     Then  Owner detail page will be displayed
+
+  Scenario: Owner's details existent
+    Given I am on the View-Owners Page
+    When  I click on owner's name
+    Then  Owner's details will be displayed

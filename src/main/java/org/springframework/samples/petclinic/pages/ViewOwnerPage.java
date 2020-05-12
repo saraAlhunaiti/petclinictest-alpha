@@ -30,10 +30,25 @@ public class ViewOwnerPage extends Page {
         xPathClick("/html/body/app-root/div[1]/nav/div/ul/li[2]/a");
         xPathClick("/html/body/app-root/div[1]/nav/div/ul/li[2]/ul/li[1]/a");
     }
-
     public void allOwnerList() {
         isExisting(PATH_Owners);
     }
 
+    //__________________ Owner's details existent
+    public void ownerDetailsExistent(){
+        isExisting("/html/body/app-root/app-owner-detail/div/div/table[1]/tr[1]/td/b");
+        isExisting("/html/body/app-root/app-owner-detail/div/div/table[1]/tr[2]/td");
+        isExisting("/html/body/app-root/app-owner-detail/div/div/table[1]/tr[3]/td");
+        isExisting("/html/body/app-root/app-owner-detail/div/div/table[1]/tr[4]/td");
+    }
+
+    public void ownersDetailsExistent(){
+        isExisting("/html/body/app-root/app-owner-list/div/div/div/table/thead/tr/th[1]");
+        isExisting("/html/body/app-root/app-owner-list/div/div/div/table/thead/tr/th[2]");
+        isExisting("/html/body/app-root/app-owner-list/div/div/div/table/thead/tr/th[3]");
+        isExisting("/html/body/app-root/app-owner-list/div/div/div/table/thead/tr/th[4]");
+        isExisting(" /html/body/app-root/app-owner-list/div/div/div/table/thead/tr/th[5]");
+
+    }
 
 }
