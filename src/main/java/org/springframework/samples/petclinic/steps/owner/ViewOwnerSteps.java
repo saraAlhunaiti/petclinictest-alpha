@@ -35,6 +35,7 @@ public class ViewOwnerSteps {
     @Then("Owner detail page will be displayed")
     public void ownerDetailPageWillBeDisplayed() {
         viewOwnerPage.ownerDetails();
+        driver.close();
     }
 
     //_________________  Scenario: Owner's details existent
@@ -50,6 +51,7 @@ public class ViewOwnerSteps {
 
     @Then("Owner's details will be displayed")
     public void ownerSDetailsWillBeDisplayed() {
+        driver.close();
 
     }
 

@@ -37,6 +37,7 @@ public class ViewOwnersSteps {
     @Then("Owners list page will be displayed")
     public void ownersListPageWillBeDisplayed() {
         viewOwnerPage.allOwnerList();
+        driver.close();
     }
 
 
@@ -55,6 +56,7 @@ public class ViewOwnersSteps {
     @Then("Owners's details will be displayed")
     public void ownersSDetailsWillBeDisplayed() {
         viewOwnerPage.ownersDetailsExistent();
+        driver.close();
     }
 
 

@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 public class RemoveVisit extends Page {
 
 
-    private static final String URL = "http://localhost:8081/petclinic/owners/1";
+    private static final String URL = "http://localhost:8081/petclinic/owners/10";
 
 
     public RemoveVisit(WebDriver driver) {

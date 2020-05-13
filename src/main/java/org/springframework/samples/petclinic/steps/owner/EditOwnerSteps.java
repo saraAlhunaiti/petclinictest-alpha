@@ -35,6 +35,7 @@ public class EditOwnerSteps {
     @Then("The owner's data will be updated")
     public void theOwnerDataWillBeUpdated() {
         editOwnerPage.ownerList();
+        driver.close();
     }
 
     @And("I update by entering symbols and numbers rather than words")
@@ -53,6 +54,7 @@ public class EditOwnerSteps {
 
     @Then("I stay in edit-owner form")
     public void IStayInEditOwnerForm() {
+        driver.close();
     }
 
     @And("Each update field has an x at the end")

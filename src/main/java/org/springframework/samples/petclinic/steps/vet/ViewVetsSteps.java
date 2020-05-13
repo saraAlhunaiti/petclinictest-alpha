@@ -36,6 +36,7 @@ public class ViewVetsSteps {
     @Then("vets list page will be displayed")
     public void vetsListPageWillBeDisplayed() {
         viewVetsPage.allVetList();
+        driver.close();
     }
 
 }

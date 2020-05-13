@@ -3,7 +3,7 @@ package org.springframework.samples.petclinic.pages;
 import org.openqa.selenium.WebDriver;
 
 public class EditOwnerPage extends Page {
-    private static final String URL = "http://localhost:8081/petclinic/owners/1";
+    private static final String URL = "http://localhost:8081/petclinic/owners/5";
 
     public EditOwnerPage(WebDriver driver) {
         super(driver);
@@ -16,8 +16,8 @@ public class EditOwnerPage extends Page {
 
     public void fillInForm() {
         xPathClick("/html/body/app-root/app-owner-detail/div/div/button[2]");
-        fill("firstName", "Besh");
-        fill("lastName", "Jamil");
+        fill("firstName", "George");
+        fill("lastName", "Franklin");
         fill("address", "Al-Safa 12. ");
         fill("city", "Jeddah");
         fill("telephone", "0555090234");
