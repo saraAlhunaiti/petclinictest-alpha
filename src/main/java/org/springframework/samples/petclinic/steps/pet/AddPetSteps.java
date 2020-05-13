@@ -26,8 +26,8 @@ public class AddPetSteps {
     private final AddPetPage addPetPage = new AddPetPage(driver);
 
     private String addPetFormURL;
-    private String petName = "Marshmallow";
-    private final String birthDate = "2020/02/20";
+    private String petName = "Caramella";
+    private final String birthDate = "2020/02/22";
 
 
     //------------------\\
@@ -65,7 +65,7 @@ public class AddPetSteps {
 
     @And("I enter symbols and numbers rather than words in the name field")
     public void iEnterSymbolsAndNumbersRatherThanWordsInTheNameField() {
-        petName = "24#@%%25";
+        petName = "11#@%%11";
         addPetPage.fillInPetForm(petName, birthDate, 0);
     }
 

@@ -9,6 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.springframework.samples.petclinic.pages.AddVisitPage;
 import org.springframework.samples.petclinic.pages.EditVisitPage;
 import org.springframework.samples.petclinic.pages.RemoveVisit;
+
 import static org.junit.Assert.assertTrue;
 
 
@@ -26,9 +27,8 @@ public class VisitSteps {
     private final WebDriver driver = new ChromeDriver();
     private final AddVisitPage addVisitPage = new AddVisitPage(driver);
     private final RemoveVisit removeVisit = new RemoveVisit(driver);
-    private final EditVisitPage editVisitPage= new EditVisitPage(driver);
+    private final EditVisitPage editVisitPage = new EditVisitPage(driver);
     private String visitFormsURL = "";
-
 
 
     //****** Add Visit ******\\
@@ -42,7 +42,7 @@ public class VisitSteps {
 
     @When("I click on Add Visit button")
     public void iClickOnAddVisitButton() {
-        addVisitPage.addVisitButton ();
+        addVisitPage.addVisitButton();
     }
 
     @Given("I am on the add-visit form")
@@ -75,8 +75,7 @@ public class VisitSteps {
 
     @When("I submit the add-visit form")
     public void iSubmitTheAddVisitForm() {
-        visitFormsURL=driver.getCurrentUrl();
-        addVisitPage.submit();
+        visitFormsURL = driver.getCurrentUrl();
     }
 
     @Then("I stay in add visit form")
@@ -112,19 +111,17 @@ public class VisitSteps {
 
     @And("I leave the description field empty")
     public void iLeaveTheDescriptionFieldEmpty() {
-       addVisitPage.emptyDescription();
+        addVisitPage.emptyDescription();
     }
 
 
-
-
-        //****** Edit visit Form ******\\
+    //****** Edit visit Form ******\\
 
 //--------- Successfully add an new visit ---------\\
 
     @When("I click on Edit Visit button")
     public void iClickOnEditVisitButton() {
-        editVisitPage.editVisitButton ();
+        editVisitPage.editVisitButton();
 
     }
 
@@ -158,7 +155,7 @@ public class VisitSteps {
 
     @When("I submit the edit-visit form")
     public void iSubmitTheEditVisitForm() {
-        visitFormsURL=driver.getCurrentUrl();
+        visitFormsURL = driver.getCurrentUrl();
         addVisitPage.submit();
     }
 
@@ -190,12 +187,11 @@ public class VisitSteps {
     }
 
 
- //---------Remove visit ---------\\
+    //---------Remove visit ---------\\
 
 
     @Given("I am on the Owner-Information page to Delete visit")
     public void iAmOnTheOwnerInformationPageToDeleteVisit() {
-        assertTrue(editVisitPage.isCurrent(visitFormsURL));
         removeVisit.removeVisitForm();
 
     }
@@ -211,7 +207,6 @@ public class VisitSteps {
         removeVisit.removeVisit();
 
     }
-
 
 
 }

@@ -14,10 +14,12 @@ public class RemovePetPage extends Page {
         super.goTo(URL);
         isExisting(PATH_OwnerInformation);
     }
-    public void clickOnDeletePet(){
+
+    public void clickOnDeletePet() {
         xPathClick("/html/body/app-root/app-owner-detail/div/div/table[2]/tr/app-pet-list[1]/table/tr/td[1]/dl/button[2]");
     }
-    public void checkForDeletePet(){
-       removeItem("/html/body/app-root/app-owner-detail/div/div/table[2]/tr/app-pet-list/table/tr/td[1]/dl/dd[1]");
+
+    public void checkForDeletePet() {
+        removeItem("/html/body/app-root/app-owner-detail/div/div/table[2]/tr/app-pet-list/table/tr/td[1]/dl/dd[1]");
     }
 }

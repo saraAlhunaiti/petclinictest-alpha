@@ -17,6 +17,7 @@ public class ViewOwnerSteps {
         System.setProperty("webdriver.chrome.silentOutput", "true");
         getLogger("org.openqa.selenium").setLevel(Level.SEVERE);
     }
+
     private final WebDriver driver = new ChromeDriver();
     ViewOwnerPage viewOwnerPage = new ViewOwnerPage(driver);
 
@@ -35,6 +36,7 @@ public class ViewOwnerSteps {
     public void ownerDetailPageWillBeDisplayed() {
         viewOwnerPage.ownerDetails();
     }
+
     //_________________  Scenario: Owner's details existent
     @Given("I am on the View-Owners Page")
     public void iAmOnTheViewOwnersPage() {

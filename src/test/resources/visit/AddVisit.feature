@@ -9,7 +9,7 @@ Feature: Add Visit
     When   I click on Add Visit button
     Given  I am on the add-visit form
     And    I enter valid visit data
-    When   I submit the form
+    When  I submit the add-visit form
     Then  The new visit details will be displayed on Owner-Information page
 
   Scenario: Unsuccessfully add an new visit

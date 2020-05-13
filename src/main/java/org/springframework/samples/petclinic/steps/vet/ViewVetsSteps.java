@@ -18,9 +18,11 @@ public class ViewVetsSteps {
         System.setProperty("webdriver.chrome.silentOutput", "true");
         getLogger("org.openqa.selenium").setLevel(Level.SEVERE);
     }
+
     private final WebDriver driver = new ChromeDriver();
     HomePage homePage = new HomePage(driver);
     ViewVetsPage viewVetsPage = new ViewVetsPage(driver);
+
     @Given("I am on the Home page")
     public void iAmOnTheHomePage() {
         homePage.home();

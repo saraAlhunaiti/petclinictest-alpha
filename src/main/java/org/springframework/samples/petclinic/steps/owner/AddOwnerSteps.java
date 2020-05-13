@@ -16,14 +16,14 @@ import static org.junit.Assert.assertTrue;
 
 public class AddOwnerSteps {
     static {
-        System.setProperty("webdriver.chrome.driver", "/Users/chromedriver");
+        System.setProperty("webdriver.chrome.driver", "/chromedriver.exe");
         System.setProperty("webdriver.chrome.silentOutput", "true");
         getLogger("org.openqa.selenium").setLevel(Level.SEVERE);
     }
 
     private final WebDriver driver = new ChromeDriver();
     AddOwnerPage addOwnerPage = new AddOwnerPage(driver);
-    private final static String ADD_OWNER_FORM_URL="http://localhost:8081/petclinic/owners/add";
+    private final static String ADD_OWNER_FORM_URL = "http://localhost:8081/petclinic/owners/add";
 
 
     @Given("I am on the add-owner form")
@@ -47,7 +47,8 @@ public class AddOwnerSteps {
     }
 
     @Then("The submit button is disabled")
-    public void theSubmitButtonIsDisabled() { assertTrue(addOwnerPage.isCurrent(ADD_OWNER_FORM_URL));
+    public void theSubmitButtonIsDisabled() {
+        assertTrue(addOwnerPage.isCurrent(ADD_OWNER_FORM_URL));
         ;
     }
 

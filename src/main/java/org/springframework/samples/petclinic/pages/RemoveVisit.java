@@ -23,7 +23,7 @@ public class RemoveVisit extends Page {
 
     }
 
-    public void  removeVisit(){
+    public void removeVisit() {
         removeItem("/html/body/app-root/app-owner-detail/div/div/table[2]/tr/app-pet-list[1]/table/tr/td[2]/app-visit-list/table/tr");
     }
 

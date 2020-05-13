@@ -14,9 +14,11 @@ public class AddVisitPage extends Page {
     public void addVisitForm() {
         super.goTo(URL);
     }
-    public void addVisitButton (){
+
+    public void addVisitButton() {
         xPathClick("/html/body/app-root/app-owner-detail/div/div/table[2]/tr/app-pet-list[1]/table/tr/td[1]/dl/button[3]");
     }
+
     public void fillInForm() {
 
         fillDate("#visit > div.form-group.has-feedback > div:nth-child(1) > div > input", "2020/05/23");
@@ -25,7 +27,7 @@ public class AddVisitPage extends Page {
     }
 
 
-    public void fillInDate(){
+    public void fillInDate() {
         fillDate("#visit > div.form-group.has-feedback > div:nth-child(1) > div > input", "Fifth of May");
         fill("description", "Lorem ipsum dolor sit amet, consectetur adipiscing elit.");
         submit();
@@ -42,11 +44,11 @@ public class AddVisitPage extends Page {
 
     }
 
-    public void emptyDescription(){
+    public void emptyDescription() {
         submit();
     }
 
-    public void emptyForm(){
+    public void emptyForm() {
         submit();
     }
 
@@ -54,10 +56,8 @@ public class AddVisitPage extends Page {
         xPathClick("//*[@id=\"visit\"]/div[2]/div/button[2]");
     }
 
-    public  void  visitdetailsDisplyed(){
+    public void visitdetailsDisplyed() {
         elementDoesExist("/html/body/app-root/app-owner-detail/div/div/table[2]/tr/app-pet-list[1]/table/tr/td[2]/app-visit-list/table/tr");
     }
 
-    public void buttonTest() {
-    }
 }

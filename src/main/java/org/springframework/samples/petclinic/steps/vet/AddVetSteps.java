@@ -14,10 +14,10 @@ import static java.util.logging.Logger.getLogger;
 import static org.junit.Assert.assertTrue;
 
 public class AddVetSteps {
-    private static final String ADD_VET_FORM_URL ="http://localhost:8081/petclinic/vets/add";
+    private static final String ADD_VET_FORM_URL = "http://localhost:8081/petclinic/vets/add";
 
     static {
-        System.setProperty("webdriver.chrome.driver", "/Users/chromedriver");
+        System.setProperty("webdriver.chrome.driver", "/chromedriver.exe");
         System.setProperty("webdriver.chrome.silentOutput", "true");
         getLogger("org.openqa.selenium").setLevel(Level.SEVERE);
     }
