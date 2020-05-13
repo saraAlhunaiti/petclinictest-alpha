@@ -18,7 +18,8 @@ Feature: Add Visit
     Given I am on the add-visit form
     And   I Provide an invalid visit date
     When  I submit the add-visit form
-    Then  I stay in add visit form
+    Then  Save visit button will be disabled
+
 
   Scenario: Leave all the fields empty
     Given I am on the page of Owner Information
@@ -26,7 +27,8 @@ Feature: Add Visit
     Given I am on the add-visit form
     And   I leave all the fields empty
     When  I submit the add-visit form
-    Then  I stay in add visit form
+    Then  Save visit button will be disabled
+
 
   Scenario: Enter valid visit date and leave description filed empty
     Given I am on the page of Owner Information
@@ -35,7 +37,8 @@ Feature: Add Visit
     And   I provide valid visit data
     And   I leave the description field empty
     When  I submit the add-visit form
-    Then  I stay in add visit form
+    Then  Save visit button will be disabled
+
 
   Scenario: Exceed the maximum allowed characters in the description field
     Given I am on the page of Owner Information
@@ -43,4 +46,4 @@ Feature: Add Visit
     Given I am on the add-visit form
     And   I enter characters exceed the limit
     When  I submit the add-visit form
-    Then  I stay in add visit form
+    Then  Save visit button will be disabled

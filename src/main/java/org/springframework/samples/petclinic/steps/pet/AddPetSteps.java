@@ -84,15 +84,10 @@ public class AddPetSteps {
     }
 
 
-    @Then("I stay in add-pet form")
-    public void iStayInAddPetForm() {
-        assertTrue(addPetPage.isCurrent(addPetFormURL));
-        driver.close();
-    }
-
     @Then("Save pet button is disabled")
     public void savePetButtonIsDisabled() {
         assertFalse(driver.findElement(By.xpath("/html/body/app-root/app-pet-add/div/div/form/div[6]/div/button[2]")).isEnabled());
+        driver.close();
     }
 }
 

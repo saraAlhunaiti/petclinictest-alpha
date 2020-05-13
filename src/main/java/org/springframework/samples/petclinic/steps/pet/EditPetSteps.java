@@ -72,15 +72,11 @@ public class EditPetSteps {
         editPetPage.fillInPetForm(" ", " ", 1);
     }
 
-    @Then("I stay in edit-pet form")
-    public void iStayInEditPetForm() {
-        assertTrue(editPetPage.isCurrent(petFormURL));
-        driver.close();
-    }
 
     @Then("click Update-pet button is disabled")
     public void clickEditPetButtonIsDisabled() {
         assertFalse(driver.findElement(By.xpath("/html/body/app-root/app-pet-edit/div/div/form/div[6]/div/button[2]")).isEnabled());
+        driver.close();
     }
 }
 

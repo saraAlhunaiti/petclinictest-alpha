@@ -4,19 +4,18 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.springframework.samples.petclinic.pages.AddVisitPage;
-import org.springframework.samples.petclinic.pages.EditPetPage;
 import org.springframework.samples.petclinic.pages.EditVisitPage;
 import org.springframework.samples.petclinic.pages.RemoveVisit;
-
-import static org.junit.Assert.assertTrue;
-
 
 import java.util.logging.Level;
 
 import static java.util.logging.Logger.getLogger;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class VisitSteps {
     static {
@@ -80,10 +79,11 @@ public class VisitSteps {
         visitFormsURL = driver.getCurrentUrl();
     }
 
-    @Then("I stay in add visit form")
-    public void iStayInAddVisitForm() {
-        assertTrue(editVisitPage.isCurrent(visitFormsURL));
-        driver.close();
+    @Then("Save visit button will be disabled")
+    public void saveVisitButtonWillBeDisabled() {
+        assertFalse(driver.findElement(By.xpath("//*[@id=\"visit\"]/div[2]/div/button[2]")).isEnabled());
+
+
     }
 
 //--------- Leave all the fields empty ---------\\
@@ -169,6 +169,13 @@ public class VisitSteps {
         driver.close();
     }
 
+
+    @Then("Update button will be disabled")
+    public void updateButtonWillBeDisabled() {
+        assertFalse(driver.findElement(By.xpath("//*[@id=\"visit\"]/div[2]/div/button[2]")).isEnabled());
+
+
+    }
     //--------- Leave all the fields empty ---------\\
 
     @And("I did not fill the visit form")
@@ -213,6 +220,5 @@ public class VisitSteps {
         driver.close();
 
     }
-
 
 }

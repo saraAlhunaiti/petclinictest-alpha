@@ -17,7 +17,7 @@ Feature: Edit visit
     Given I am on the edit-visit form
     And   I Provide an invalid visit date
     When  I submit the edit-visit form
-    Then  I stay in edit visit form
+    Then  Update button will be disabled
 
   Scenario: Leave all the fields empty
     Given I am on the page of Owner Information
@@ -25,7 +25,8 @@ Feature: Edit visit
     Given I am on the edit-visit form
     And   I did not fill the visit form
     When  I submit the edit-visit form
-    Then  I stay in edit visit form
+    Then  Update button will be disabled
+
 
   Scenario: Exceed the maximum allowed characters in the description field
     Given I am on the page of Owner Information
@@ -33,4 +34,6 @@ Feature: Edit visit
     Given I am on the edit-visit form
     And   I edit the description filed with characters that exceed the limit
     When  I submit the edit-visit form
-    Then  I stay in edit visit form
+    Then  Update button will be disabled
+
+
