@@ -4,6 +4,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.springframework.samples.petclinic.pages.AddPetPage;
@@ -11,6 +12,7 @@ import org.springframework.samples.petclinic.pages.AddPetPage;
 import java.util.logging.Level;
 
 import static java.util.logging.Logger.getLogger;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class AddPetSteps {
@@ -44,7 +46,6 @@ public class AddPetSteps {
 
     @When("I submit add-Pet form")
     public void iSubmitAddPetForm() {
-        addPetFormURL = driver.getCurrentUrl();
         addPetPage.submit();
 
     }
@@ -87,6 +88,11 @@ public class AddPetSteps {
     public void iStayInAddPetForm() {
         assertTrue(addPetPage.isCurrent(addPetFormURL));
         driver.close();
+    }
+
+    @Then("Save pet button is disabled")
+    public void savePetButtonIsDisabled() {
+        assertFalse(driver.findElement(By.xpath("/html/body/app-root/app-pet-add/div/div/form/div[6]/div/button[2]")).isEnabled());
     }
 }
 

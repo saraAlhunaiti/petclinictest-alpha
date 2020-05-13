@@ -4,6 +4,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.springframework.samples.petclinic.pages.EditPetPage;
@@ -11,6 +12,7 @@ import org.springframework.samples.petclinic.pages.EditPetPage;
 import java.util.logging.Level;
 
 import static java.util.logging.Logger.getLogger;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class EditPetSteps {
@@ -48,6 +50,7 @@ public class EditPetSteps {
     @Then("The updated pet's data will be displayed")
     public void theUpdatedPetSDataWillBeDisplayed() {
         editPetPage.updatedPetName(petName);
+
         driver.close();
     }
 
@@ -75,6 +78,10 @@ public class EditPetSteps {
         driver.close();
     }
 
+    @Then("click Update-pet button is disabled")
+    public void clickEditPetButtonIsDisabled() {
+        assertFalse(driver.findElement(By.xpath("/html/body/app-root/app-pet-edit/div/div/form/div[6]/div/button[2]")).isEnabled());
+    }
 }
 
 

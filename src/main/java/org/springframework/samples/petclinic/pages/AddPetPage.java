@@ -1,6 +1,8 @@
 package org.springframework.samples.petclinic.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class AddPetPage extends Page {
     private static final String URL = "http://localhost:8081/petclinic/owners/1";
@@ -30,6 +32,9 @@ public class AddPetPage extends Page {
     public void submit() {
         xPathClick("/html/body/app-root/app-pet-add/div/div/form/div[6]/div/button[2]");
     }
+ public boolean isEnabled(WebElement element){
 
+     return ((element).isEnabled());
+ }
 
 }
