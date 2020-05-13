@@ -38,6 +38,6 @@ Feature: Add Owner
     Given I am on the add-owner form
     And   I enter symbols and numbers rather than words in all fields except the telephone no. field
     When  I submit the form
-    Then  The new owner will be added to the owner's list
+    Then  The add owner button is disabled
 
 

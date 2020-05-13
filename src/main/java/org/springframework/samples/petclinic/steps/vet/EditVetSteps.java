@@ -34,6 +34,7 @@ public class EditVetSteps {
 
     @Then("The vet's name will be updated")
     public void TheVetNameWillBeUpdated() {
+        driver.close();
     }
 
     @And("I update vet by entering symbols and numbers rather than words")
@@ -52,6 +53,7 @@ public class EditVetSteps {
 
     @Then("I stay in edit-Vet form")
     public void IStayInEditVetForm() {
+        driver.close();
     }
 
     @And("Each vet update field has an x at the end")

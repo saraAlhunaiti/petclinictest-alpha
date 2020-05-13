@@ -54,6 +54,7 @@ public class AddVetSteps {
     @And("Each field has x at the end")
     public void eachFieldHasXAtTheEnd() {
         assertTrue(addVetPage.areNameFieldsUnchecked());
+        driver.close();
     }
 
     @And("I enter then remove values from all fields")
@@ -76,6 +77,7 @@ public class AddVetSteps {
     @Then("Name fields will have a tick on the right")
     public void nameFieldsWillHaveATickOnTheRight() {
         assertTrue(addVetPage.areNameFieldsChecked());
+        driver.close();
 
     }
 }

@@ -34,5 +34,6 @@ public class RemoveVetSteps {
     @Then("The vet will be removed")
     public void theVetWillBeRemoved() {
         removeVetPage.checkForDeleteVet();
+        driver.close();
     }
 }

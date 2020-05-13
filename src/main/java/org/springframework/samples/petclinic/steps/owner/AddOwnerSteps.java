@@ -24,6 +24,7 @@ public class AddOwnerSteps {
     private final WebDriver driver = new ChromeDriver();
     AddOwnerPage addOwnerPage = new AddOwnerPage(driver);
     private final static String ADD_OWNER_FORM_URL = "http://localhost:8081/petclinic/owners/add";
+    private final static String ADD_PET_FORM_UR = "http://localhost:8081/petclinic/owners\n";
 
 
     @Given("I am on the add-owner form")
@@ -44,6 +45,7 @@ public class AddOwnerSteps {
     @Then("Each field will have a tick on the right")
     public void eachFieldWillHaveATickOnTheRight() {
         assertTrue(addOwnerPage.areAllFieldsChecked());
+        driver.close();
     }
 
     @Then("The submit button is disabled")
@@ -66,11 +68,13 @@ public class AddOwnerSteps {
     @And("Each field has an x at the end")
     public void validateIncorrectInputErrorSymbol() {
         assertTrue(addOwnerPage.areNameFieldsUnchecked());
+        driver.close();
     }
 
     @And("The field has an x at the end")
     public void validateIncorrectInputErrorSymbols() {
         assertTrue(addOwnerPage.isTelephoneFieldUnchecked());
+        driver.close();
     }
 
     @And("I enter then remove values from each field")
@@ -100,13 +104,17 @@ public class AddOwnerSteps {
     }
 
 
-    @Then("The new owner will be added to the owner's list")
-    public void theNewOwnerWillBeAddedToTheOwnerSList() {
-        assertTrue(addOwnerPage.checkOwnerIsAdded());
-    }
-
     @And("All fields has an x at the end")
     public void allFieldsHasAnXAtTheEnd() {
         assertTrue(addOwnerPage.areAllFieldsUnchecked());
+        driver.close();
+    }
+
+
+    @Then("The add owner button is disabled")
+    public void theAddOwnerButtonIsDisabled() {
+        assertTrue(addOwnerPage.isCurrent(ADD_PET_FORM_UR));
+        driver.close();
+
     }
 }

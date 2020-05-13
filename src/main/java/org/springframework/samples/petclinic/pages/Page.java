@@ -96,7 +96,7 @@ public class Page {
 
     protected void editdelete(String path) {
         driver.findElement(By.cssSelector(path)).clear();
-        driver.findElement(By.cssSelector(path)).sendKeys("a");
+        //driver.findElement(By.cssSelector(path)).sendKeys("a");
         driver.findElement(By.cssSelector(path)).sendKeys("\b");
     }
 

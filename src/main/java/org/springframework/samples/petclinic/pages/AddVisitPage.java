@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 
 public class AddVisitPage extends Page {
 
-    private static final String URL = "http://localhost:8081/petclinic/owners/1";
+    private static final String URL = "http://localhost:8081/petclinic/owners/10";
 
 
     public AddVisitPage(WebDriver driver) {
@@ -41,7 +41,7 @@ public class AddVisitPage extends Page {
 
     public void validDate() {
         fillDate("#visit > div.form-group.has-feedback > div:nth-child(1) > div > input", "2020/05/23");
-
+        submit();
     }
 
     public void emptyDescription() {

@@ -7,6 +7,7 @@ import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.springframework.samples.petclinic.pages.AddVisitPage;
+import org.springframework.samples.petclinic.pages.EditPetPage;
 import org.springframework.samples.petclinic.pages.EditVisitPage;
 import org.springframework.samples.petclinic.pages.RemoveVisit;
 
@@ -59,6 +60,7 @@ public class VisitSteps {
     @Then("The new visit details will be displayed on Owner-Information page")
     public void theNewVisitDetailsWillBeDisplayedOnOwnerInformationPage() {
         addVisitPage.visitdetailsDisplyed();
+        driver.close();
     }
 
 //--------- Unsuccessfully add an new visit ---------\\
@@ -81,6 +83,7 @@ public class VisitSteps {
     @Then("I stay in add visit form")
     public void iStayInAddVisitForm() {
         assertTrue(editVisitPage.isCurrent(visitFormsURL));
+        driver.close();
     }
 
 //--------- Leave all the fields empty ---------\\
@@ -140,6 +143,7 @@ public class VisitSteps {
 
     @Then("The updated visit's data will be displayed")
     public void theUpdatedPetSDataWillBeDisplayed() {
+        driver.close();
 
     }
 
@@ -156,12 +160,13 @@ public class VisitSteps {
     @When("I submit the edit-visit form")
     public void iSubmitTheEditVisitForm() {
         visitFormsURL = driver.getCurrentUrl();
-        addVisitPage.submit();
+        editVisitPage.submit();
     }
 
     @Then("I stay in edit visit form")
     public void iStayInEditVisitForm() {
         assertTrue(editVisitPage.isCurrent(visitFormsURL));
+        driver.close();
     }
 
     //--------- Leave all the fields empty ---------\\
@@ -205,6 +210,7 @@ public class VisitSteps {
     @Then("The visit will be removed")
     public void theVisitWillBeRemoved() {
         removeVisit.removeVisit();
+        driver.close();
 
     }
 
