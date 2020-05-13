@@ -21,3 +21,9 @@ Feature: Add Vet
     Then  The submit button will be disabled
     And   I see a specific message for each field specifying it is required
     And   Each field has x at the end
+
+  Scenario: Create vet with symbols and numbers in key fields
+    Given I am on the add-vet form
+    And   I enter symbols and numbers rather than words in name fields
+    When  I submit the vet form
+    Then  The submit button will be disabled

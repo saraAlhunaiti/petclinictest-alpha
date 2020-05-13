@@ -24,7 +24,7 @@ public class AddOwnerSteps {
     private final WebDriver driver = new ChromeDriver();
     AddOwnerPage addOwnerPage = new AddOwnerPage(driver);
     private final static String ADD_OWNER_FORM_URL = "http://localhost:8081/petclinic/owners/add";
-    private final static String ADD_PET_FORM_UR = "http://localhost:8081/petclinic/owners\n";
+    private final static String OWNER_FORM_URL = "http://localhost:8081/petclinic/owners\n";
 
 
     @Given("I am on the add-owner form")
@@ -113,7 +113,7 @@ public class AddOwnerSteps {
 
     @Then("The add owner button is disabled")
     public void theAddOwnerButtonIsDisabled() {
-        assertTrue(addOwnerPage.isCurrent(ADD_PET_FORM_UR));
+        assertTrue(addOwnerPage.isCurrent(OWNER_FORM_URL));
         driver.close();
 
     }

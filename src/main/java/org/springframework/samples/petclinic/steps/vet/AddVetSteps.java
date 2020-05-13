@@ -14,10 +14,12 @@ import static java.util.logging.Logger.getLogger;
 import static org.junit.Assert.assertTrue;
 
 public class AddVetSteps {
-    private static final String ADD_VET_FORM_URL = "http://localhost:8081/petclinic/vets/add";
+    private static final String ADD_VET_FORM_URL ="http://localhost:8081/petclinic/vets/add";
+    private final static String OWNER_FORM_URL = "http://localhost:8081/petclinic/vets";
+
 
     static {
-        System.setProperty("webdriver.chrome.driver", "/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "/Users/chromedriver");
         System.setProperty("webdriver.chrome.silentOutput", "true");
         getLogger("org.openqa.selenium").setLevel(Level.SEVERE);
     }
@@ -54,7 +56,6 @@ public class AddVetSteps {
     @And("Each field has x at the end")
     public void eachFieldHasXAtTheEnd() {
         assertTrue(addVetPage.areNameFieldsUnchecked());
-        driver.close();
     }
 
     @And("I enter then remove values from all fields")
@@ -65,7 +66,7 @@ public class AddVetSteps {
 
     @Then("The submit button will be disabled")
     public void theSubmitButtonWillBeDisabled() {
-        assertTrue(addVetPage.isCurrent(ADD_VET_FORM_URL));
+        assertTrue(addVetPage.isCurrent(OWNER_FORM_URL));
     }
 
     @And("I see a specific message for each field specifying it is required")
@@ -77,7 +78,11 @@ public class AddVetSteps {
     @Then("Name fields will have a tick on the right")
     public void nameFieldsWillHaveATickOnTheRight() {
         assertTrue(addVetPage.areNameFieldsChecked());
-        driver.close();
 
+    }
+
+    @And("I enter symbols and numbers rather than words in name fields")
+    public void iEnterSymbolsAndNumbersRatherThanWordsInNameFields() {
+        addVetPage.fillInWithSymbols();
     }
 }
